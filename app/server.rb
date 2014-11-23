@@ -1,4 +1,15 @@
 require 'sinatra/base'
+require 'data_mapper'
+
+env = ENV['RACK_ENV'] || 'development'
+
+DataMapper.setup(:default, "postgres://localhost/chitter_#{env}")
+
+require './app/post'
+require './app/user'
+
+DataMapper.finalize
+DataMapper.auto_upgrade!
 
 class Chitter < Sinatra::Base
   

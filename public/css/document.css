@@ -1,0 +1,51 @@
+@font-face {
+  font-family: 'TheanoDidot-Regular';
+  src: url('TheanoDidot-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Ostrich Sans Regular Black';
+  src: url('ostrich-black.ttf');
+}
+
+@font-face {
+  font-family: 'Ostrich Sans Light';
+  src: url('ostrich-light.ttf');
+}
+
+@font-face {
+  font-family: 'Ostrich Sans Rounded';
+  src: url('ostrich-rounded.ttf');
+}
+
+
+@font-face {
+  font-family: 'Ostrich Sans Regular';
+  src: url('ostrich-regular.ttf');
+}
+
+body {
+  background-color: #ecf0f1; 
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 5%;
+}
+
+h1 {
+  font-family: 'Ostrich Sans Regular Black';
+  font-size: 4em;
+  color: #2c3e50;
+  text-align: justify;
+  text-justify; inter-word;
+  white-space: nowrap; 
+  margin-bottom: 1em;
+}
+
+p {
+  font-family: 'Ostrich Sans Rounded';
+  color: black;
+  font-size: 2em;
+  text-align: justify;
+  white-space: nowrap;
+  text-justify; inter-word;
+}

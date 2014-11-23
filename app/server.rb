@@ -5,8 +5,8 @@ env = ENV['RACK_ENV'] || 'development'
 
 DataMapper.setup(:default, "postgres://localhost/chitter_#{env}")
 
-require './post.rb'
-require './user'
+require_relative './post.rb'
+require_relative './user.rb'
 
 DataMapper.finalize
 DataMapper.auto_upgrade!

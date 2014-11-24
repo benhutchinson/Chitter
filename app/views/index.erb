@@ -11,7 +11,10 @@
 POST: <%= post.message %>
 </p>
 <p>
-CONTRIBUTOR: TBC
+CONTRIBUTOR: <%= post.user.name %>
+</p>
+<p>
+CONTRIBUTOR USER-NAME: <%= post.user.username %>
 </p>
 <p>
 TIME OF POST: <%= post.time %> 

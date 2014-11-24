@@ -24,6 +24,7 @@ class Chitter < Sinatra::Base
 
   get '/' do
     @posts = Post.all
+    @users = User.all
     erb :index
   end
 
@@ -33,9 +34,9 @@ class Chitter < Sinatra::Base
 
   post '/user_reg' do 
     reg_user = User.create(:name => params[:name],
-                          :email => params[:email],
-                          :username => params[:username],
-                          :password => params[:password])
+                           :email => params[:email],
+                           :username => params[:username],
+                           :password => params[:password])
     if reg_user.save
       flash[:notice] = "You have successfully registered.  Welcome to the party."
       redirect '/'

@@ -9,5 +9,5 @@ class Post
   property :time,     DateTime
 
   belongs_to :user
-
+  
 end

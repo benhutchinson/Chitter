@@ -1,3 +1,16 @@
-<h1>Eat Sleep Chit Repeat</h1>
+<h1>Eat Peep Chit Repeat</h1>
 
-<p>Content will go here.</p>
+<p id="headertext">WILL YOU START THE FANS PLEASE?</p>
+
+<% @posts.reverse.each do |post| %>
+<p>
+POST: <%= post.message %>
+</p>
+<p>
+CONTRIBUTOR: TBC
+</p>
+<p>
+TIME OF POST: <%= post.time %> 
+</p>
+<hr class="divide" style="height:1px;color:gray">
+<% end %>

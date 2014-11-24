@@ -17,6 +17,7 @@ class Chitter < Sinatra::Base
   set :public_folder, Proc.new { File.join(root, ".././public") }
 
   get '/' do
+    @posts = Post.all
     erb :index
   end
 

@@ -24,6 +24,22 @@
   src: url('ostrich-regular.ttf');
 }
 
+#headertext {
+  font-family: 'Ostrich Sans Rounded';
+  font-weight: bold;
+  color: gray;
+  padding-bottom: 2em;
+}
+
+.divide {
+
+  margin-top: 3em;
+  margin-bottom: 4em;
+  background-color: #bdc3c7;
+  border-width: 0px;
+
+}
+
 body {
   background-color: #ecf0f1; 
   margin-left: 25%;
@@ -36,9 +52,8 @@ h1 {
   font-size: 4em;
   color: #2c3e50;
   text-align: justify;
-  text-justify; inter-word;
   white-space: nowrap; 
-  margin-bottom: 1em;
+  margin-bottom: 0.7em;
 }
 
 p {

@@ -28,9 +28,8 @@ feature "User visits homepage" do
     Post.create(:message => "Calvin Harris",
                 :time => Time.now + 60,
                 :user_id => "1")
-    p Post.all
     visit '/'
-    expect("Calvin").to appear_before("Chitter")
+    expect("Calvin").to appear_before("dead")
   end
 
 end

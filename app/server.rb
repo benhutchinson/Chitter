@@ -21,6 +21,19 @@ class Chitter < Sinatra::Base
     erb :index
   end
 
+  get '/user_reg' do 
+    erb :sign_up
+  end
+
+  post '/user_reg' do 
+    reg_user = User.create(:name => params[:name],
+                          :email => params[:email],
+                          :username => params[:username],
+                          :password => params[:password])
+    # flash[:notice] = "You have successfully registered."
+    redirect '/'
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end

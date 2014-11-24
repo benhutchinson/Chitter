@@ -31,6 +31,21 @@
   padding-bottom: 2em;
 }
 
+form {
+  margin-bottom: 2em;
+}
+
+input {
+  margin-bottom: 2em;
+  padding: 0.6em;
+  border: 1px solid;
+  border-color: #2c3e50;
+}
+
+#submit {
+  margin-top: 3em;
+}
+
 .divide {
 
   margin-top: 3em;
@@ -62,5 +77,4 @@ p {
   font-size: 2em;
   text-align: justify;
   white-space: nowrap;
-  text-justify; inter-word;
 }

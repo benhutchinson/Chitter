@@ -40,12 +40,14 @@ class Chitter < Sinatra::Base
       flash[:notice] = "You have successfully registered.  Welcome to the party."
       redirect '/'
     else 
-      if User.all.map {|user| user.username }.include? (params[:username])
-        flash[:error] = "Sorry. That username has already been taken.  Please choose another one."
+      if (User.all.map {|user| user.email }.include? (params[:email])) && (User.all.map {|user| user.username }.include? (params[:username]))
+        flash.now[:error] = "Both that email and username have  been taken.  Please try something new."
+      elsif User.all.map {|user| user.username }.include? (params[:username])
+        flash.now[:error] = "Sorry. That username has already been taken.  Please choose another one."
       elsif User.all.map {|user| user.email }.include? (params[:email])
-        flash[:error] = "Sorry. That email address has already been used.  Please use another one."
+        flash.now[:error] = "Sorry. That email address has already been used.  Please use another one."
       else
-        flash[:error] = "Please try again."
+        flash.now[:error] = "Please try again."
       end
       erb :sign_up
     end

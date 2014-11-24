@@ -1,5 +1,9 @@
 <p id="headertext">WILL YOU START THE FANS PLEASE?</p>
 
+<% if flash[:notice] %>
+<p id="headertext"><%= flash[:notice] %></p>
+<% end %>
+
 <p id="headertext">// <a href="/user_reg">REGISTER</a> // POST</p>
 
 <% @posts.reverse.each do |post| %>

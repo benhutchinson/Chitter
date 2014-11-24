@@ -1,5 +1,9 @@
 <p id="headertext">REGISTRATION</p>
 
+<% if flash[:error] %>
+<p id="headertext"><%= flash[:error] %></p>
+<% end %>
+
 <form action="/user_reg" method="post">
 
 <input type="text" name="name" placeholder="NAME">

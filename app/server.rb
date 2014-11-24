@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'data_mapper'
+require 'rack-flash'
 
 env = ENV['RACK_ENV'] || 'development'
 
@@ -15,6 +16,11 @@ class Chitter < Sinatra::Base
   
   set :views, Proc.new { File.join(root, "./views") }
   set :public_folder, Proc.new { File.join(root, ".././public") }
+  enable :sessions
+  set :session_secret, 'super secret'
+
+  use Rack::Flash
+  use Rack::MethodOverride
 
   get '/' do
     @posts = Post.all
@@ -30,8 +36,19 @@ class Chitter < Sinatra::Base
                           :email => params[:email],
                           :username => params[:username],
                           :password => params[:password])
-    # flash[:notice] = "You have successfully registered."
-    redirect '/'
+    if reg_user.save
+      flash[:notice] = "You have successfully registered.  Welcome to the party."
+      redirect '/'
+    else 
+      if User.all.map {|user| user.username }.include? (params[:username])
+        flash[:error] = "Sorry. That username has already been taken.  Please choose another one."
+      elsif User.all.map {|user| user.email }.include? (params[:email])
+        flash[:error] = "Sorry. That email address has already been used.  Please use another one."
+      else
+        flash[:error] = "Please try again."
+      end
+      erb :sign_up
+    end
   end
 
   # start the server if ruby file executed directly

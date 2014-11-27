@@ -8,7 +8,6 @@ gem 'bcrypt-ruby'
 gem 'rack-flash3'
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'orderly'
   gem 'capybara'
   gem 'cucumber'

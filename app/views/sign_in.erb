@@ -1,0 +1,13 @@
+<p id="headertext">SIGN-IN</p>
+
+<% if flash[:error] %>
+<p id="headertext"><%= flash[:error] %></p>
+<% end %>
+
+<form action="/sign_in" method="post">
+
+<input type="text" name="username" placeholder="USERNAME">
+<br><input type="password" name="password" placeholder="PASSWORD">
+<br><input type="submit" value="SIGN-IN" id="submit">
+
+</form>

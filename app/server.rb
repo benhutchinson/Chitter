@@ -54,6 +54,49 @@ class Chitter < Sinatra::Base
     end
   end
 
+  get '/sign_in' do 
+    erb :sign_in
+  end
+
+  post '/sign_in' do 
+    username, password = params[:username], params[:password]
+    user = User.authenticate(username, password)
+    if user 
+      session[:user_id] = user.id
+      flash[:notice] = "Hi #{user.name} : Time to Chit Out"
+      redirect to ('/')
+    else
+      flash.now[:error] = "Sorry, the email or password entered is incorrect."
+      erb :sign_in
+    end
+  end
+
+  get '/sign_out' do 
+    unless session[:user_id] == nil
+      session[:user_id] = nil
+      flash[:notice] = "Signed out - don't forget to sign back in if you want to peep."
+    else
+      flash[:notice] = "You not signed in.  Fancy doing something about that?"      
+    end
+    redirect to ('/')
+  end
+
+  get '/peep' do 
+    if session[:user_id] == nil
+      flash[:notice] = "You need to be signed in before you can post."
+      redirect to ('/')
+    else
+      erb :peep
+    end
+  end
+
+  post '/peep' do 
+    Post.create(:message => params[:message],
+                :user_id => session[:user_id], :time => Time.now)
+    flash[:notice] = "Thanks for your wisdom.  It is now LIVE below."
+    redirect '/'
+  end
+
   # start the server if ruby file executed directly
   run! if app_file == $0
 end

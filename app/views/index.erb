@@ -4,7 +4,7 @@
 <p id="headertext"><%= flash[:notice] %></p>
 <% end %>
 
-<p id="headertext">// <a href="/user_reg">REGISTER</a> // POST</p>
+<p id="headertext">// <a href="/user_reg">REGISTER</a> // <a href="/sign_in">SIGN-IN</a> // <a href="/sign_out">SIGN-OUT</a> // <a href="/peep">POST</a></p>
 
 <% @posts.reverse.each do |post| %>
 <p>
@@ -17,7 +17,10 @@ CONTRIBUTOR: <%= post.user.name %>
 CONTRIBUTOR USER-NAME: <%= post.user.username %>
 </p>
 <p>
-TIME OF POST: <%= post.time %> 
+TIME OF POST: <%= post.time.to_time.strftime("%H:%M%p") %> 
+</p>
+<p>
+DATE OF POST: <%= post.time.to_date.strftime("%D") %> 
 </p>
 <hr class="divide" style="height:1px;color:gray">
 <% end %>

@@ -4,7 +4,7 @@ require 'rack-flash'
 
 env = ENV['RACK_ENV'] || 'development'
 
-DataMapper.setup(:default, "postgres://localhost/chitter_#{env}")
+DataMapper.setup(:default, ENV["DATABASE_URL"] || "postgres://localhost/chitter_#{env}")
 
 require_relative './post.rb'
 require_relative './user.rb'

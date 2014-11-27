@@ -50,6 +50,25 @@ textarea {
   line-height: 12px;
 }
 
+.content {
+  height: 50%;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.content li {
+  opacity: 0.3;
+}
+
+.content li:first-child {
+  opacity: 1;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: none;
+} 
+
 #submit {
   margin-top: 3em;
 }

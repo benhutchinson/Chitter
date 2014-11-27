@@ -6,7 +6,10 @@
 
 <p id="headertext">// <a href="/user_reg">REGISTER</a> // <a href="/sign_in">SIGN-IN</a> // <a href="/sign_out">SIGN-OUT</a> // <a href="/peep">POST</a></p>
 
+<div class="content">
+<ul id="posts">
 <% @posts.reverse.each do |post| %>
+<li>
 <p>
 POST: <%= post.message %>
 </p>
@@ -23,4 +26,22 @@ TIME OF POST: <%= post.time.to_time.strftime("%H:%M%p") %>
 DATE OF POST: <%= post.time.to_date.strftime("%D") %> 
 </p>
 <hr class="divide" style="height:1px;color:gray">
+</li>
 <% end %>
+</ul></div>
+
+<script>
+
+  $(document).ready(function(){
+
+    $('.content li').on('mouseenter', function() {
+      $(this).animate({opacity: 1}, 800);
+    });
+
+    $('.content li').on('mouseleave', function() {
+      $(this).animate({opacity: 0.4}, 800);
+    });
+
+    });
+      
+</script>

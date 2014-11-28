@@ -10,6 +10,7 @@ class User
   property :email,    String, :unique => true, :format => :email_address
   property :username, String, :unique => true
   property :password_hash, Text
+  property :password_token, Text
 
   has n, :posts
 

@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'data_mapper'
 require 'rack-flash'
+require 'mailgun'
 
 env = ENV['RACK_ENV'] || 'development'
 
@@ -83,6 +84,41 @@ class Chitter < Sinatra::Base
     redirect to ('/')
   end
 
+  get '/forgot_password' do 
+    erb :forgot_password
+  end
+
+  post '/forgot_password' do
+    user = User.first(email: params[:email])
+    if user
+      user.password_token = (1..64).map{('A'..'Z').to_a.sample}.join
+      user.save 
+      flash[:notice] = "Thank you. Please check your email shortly."
+      mg_client = Mailgun::Client.new ENV['MY_MAILGUN_KEY']
+      message_params = {:from    => ENV['MY_MAILGUN_SANDBOX'],
+                    :to      => params[:email],
+                    :subject => 'Password Reset : Eat Peep Chit Repeat',
+                    :text    => "Yo #{user.name}! Please visit https://powerful-eyrie-5942.herokuapp.com/reset_password/#{user.password_token} to reset your password.  Thank you."}
+      mg_client.send_message ENV['MY_MAILGUN_SANDBOX2'], message_params
+    else
+      flash[:notice] = "Sorry, we can't find a user with that email.  Please register."
+    end
+    redirect '/'
+  end
+
+  get '/reset_password/:token' do
+    @token = params[:token]
+    user = User.first(password_token: @token)
+    erb :reset_password
+  end
+
+  post './reset_password' do 
+    flash[:notice] = "Your password has been successfully reset."
+    user = User.first(password_token: params[:password_token])
+    user.update(password: params[:password], password_token: nil)
+    redirect '/'
+  end
+ 
   get '/peep' do 
     if session[:user_id] == nil
       flash[:notice] = "You need to be signed in before you can post."

@@ -27,14 +27,10 @@ POST: <%= post.message %>
 <p>
 CONTRIBUTOR: <%= post.user.name %>
 </p>
-<p>
+<p id="labels">
+DATE & TIME OF POST: <%= post.time.to_date.strftime("%D") %>, <%= post.time.to_time.strftime("%H:%M%p") %>
+<br>
 CONTRIBUTOR USER-NAME: <%= post.user.username %>
-</p>
-<p>
-TIME OF POST: <%= post.time.to_time.strftime("%H:%M%p") %> 
-</p>
-<p>
-DATE OF POST: <%= post.time.to_date.strftime("%D") %> 
 </p>
 <hr class="divide" style="height:1px;color:gray">
 </li>

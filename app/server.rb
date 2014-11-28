@@ -23,6 +23,7 @@ class Chitter < Sinatra::Base
   use Rack::MethodOverride
 
   get '/' do
+    session[:user_id] == nil ? @current_user = nil : @current_user = User.get(session[:user_id])
     @posts = Post.all
     @users = User.all
     erb :index
@@ -38,7 +39,8 @@ class Chitter < Sinatra::Base
                            :username => params[:username],
                            :password => params[:password])
     if reg_user.save
-      flash[:notice] = "You have successfully registered.  Welcome to the party."
+      flash[:notice] = "Yo #{reg_user.name}!  We really wanna see those fingers."
+      session[:user_id] = reg_user.id
       redirect '/'
     else 
       if (User.all.map {|user| user.email }.include? (params[:email])) && (User.all.map {|user| user.username }.include? (params[:username]))

@@ -1,10 +1,21 @@
-<p id="headertext">WILL YOU START THE FANS PLEASE?</p>
-
 <% if flash[:notice] %>
 <p id="headertext"><%= flash[:notice] %></p>
+
+<% else %>
+
+<p id="headertext">WILL YOU START THE FANS PLEASE?</p>
+
 <% end %>
 
-<p id="headertext" style="margin-bottom: 0.7em">// <a href="/user_reg">REGISTER</a> // <a href="/sign_in">SIGN-IN</a> // <a href="/sign_out">SIGN-OUT</a> // <a href="/peep">POST</a></p>
+<% if @current_user == nil %>
+
+<p id="headertext" style="margin-bottom: 0.7em">// <a href="/sign_in">SIGN-IN</a> // <a href="/user_reg">REGISTER</a></p>
+
+<% else %>
+
+<p id="headertext" style="margin-bottom: 0.7em">// <a href="/peep">POST</a> // <a href="/sign_out">SIGN-OUT</a></p>
+
+<% end %>
 
 <div class="content">
 <ul id="posts">

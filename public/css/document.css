@@ -51,7 +51,7 @@ textarea {
 }
 
 .content {
-  height: 50%;
+  height: 60%;
   overflow: scroll;
   overflow-x: hidden;
 }

@@ -31,8 +31,12 @@ feature "User decides to post" do
 
   scenario "but is not signed-in" do 
     visit '/'
-    click_link 'POST'
-    expect(page).to have_content("You need to be signed in before you can post.")
+    click_link 'SIGN-IN'
+    fill_in 'username', :with => 'bendev'
+    fill_in 'password', :with => "test"
+    click_button('SIGN-IN')
+    click_link 'SIGN-OUT'
+    expect(page).not_to have_content("SIGN-OUT")
   end
 
 end

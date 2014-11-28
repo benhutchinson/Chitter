@@ -22,8 +22,7 @@ feature "User wants to sign out" do
 
   scenario 'but is not currently signed in' do
     visit '/'
-    click_link('SIGN-OUT')
-    expect(page).to have_content("You not signed in.  Fancy doing something about that?")
+    expect(page).not_to have_content("SIGN-OUT")
   end
 
 end

@@ -17,7 +17,7 @@ feature "User wants to sign up" do
     fill_in 'username', :with => 'mingchan'
     fill_in 'password', :with => 'mchan'
     click_button 'SIGN-UP'
-    expect(page).to have_content("You have successfully registered.  Welcome to the party.")
+    expect(page).to have_content("Yo Ming")
   end
 
   scenario "but someone else has already taken that username" do 

@@ -3,7 +3,7 @@ Chitter
 
 ##Week 4: Weekend Challenge : Databases
 
-This challenge consolidated our experience from the Bookmark Manager task.  It involved a basic Twitter clone that allowed users to post messages to a public stream.  
+This challenge consolidated our experience from the Bookmark Manager task.  It involved a basic Twitter clone that allowed users to post messages to a public stream.  The end app is hosted here on [Heroku](https://powerful-eyrie-5942.herokuapp.com/).
 
 ###Basic Functionality
 

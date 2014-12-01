@@ -114,7 +114,7 @@ class Chitter < Sinatra::Base
     erb :reset_password
   end
 
-  post './reset_password' do 
+  post '/reset_password' do 
     flash[:notice] = "Your password has been successfully reset."
     user = User.first(password_token: params[:password_token])
     user.update(password: params[:password], password_token: nil)

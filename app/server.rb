@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'data_mapper'
 require 'rack-flash'
 require 'mailgun'
+require 'rubygems'
 
 env = ENV['RACK_ENV'] || 'development'
 
@@ -17,6 +18,7 @@ class Chitter < Sinatra::Base
   
   set :views, Proc.new { File.join(root, "./views") }
   set :public_folder, Proc.new { File.join(root, ".././public") }
+
   enable :sessions
   set :session_secret, 'super secret'
 
@@ -98,7 +100,7 @@ class Chitter < Sinatra::Base
       message_params = {:from    => ENV['MY_MAILGUN_SANDBOX'],
                     :to      => params[:email],
                     :subject => 'Password Reset : Eat Peep Chit Repeat',
-                    :text    => "Yo #{user.name}! Please visit https://powerful-eyrie-5942.herokuapp.com/reset_password/#{user.password_token} to reset your password.  Thank you."}
+                    :text    => "Yo #{user.name}! Please visit https://powerful-eyrie-5942.herokuapp.com/reset_password/#{user.password_token}"}
       mg_client.send_message ENV['MY_MAILGUN_SANDBOX2'], message_params
     else
       flash[:notice] = "Sorry, we can't find a user with that email.  Please register."

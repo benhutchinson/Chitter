@@ -28,4 +28,8 @@ class User
     end
   end
 
+def self.validate_unique_email_user?(params)
+  User.all.map {|user| user.email }.include?(params[:email]) && User.all.map {|user| user.username }.include?(params[:username])
+end
+
 end

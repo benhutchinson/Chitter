@@ -13,8 +13,16 @@ Users sign up with an email, name, password, and a user-name, and are subsequent
 
 There is refactoring potential in certain spec tests and controllers could be separated from the central server app file.  I have deliberately chosen to keep things as they are for my ease of reference.
 
-###Technologies
+###Feedback From Review & Ways To Improve
+- Refactoring per above.
+- Many tests appear similar.  A helper module could be established and included into the spec files as appropriate.
+- Mailgun is being called in tests and could be stubbed out
+- Tests could be more eloquent.  1 test = 1 expectation
+- Controllers could be grouped in their own folder
+- Animation in index.erb could be extracted into its own script file and called in
+- The controller has a lot of logic in it (per above).  Mailgun could be considered for extraction into its own separate class or module.
 
+###Technologies
 - DataMapper with a PostgreSQL Database
 - Ruby
 - BCrypt

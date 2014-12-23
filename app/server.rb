@@ -46,8 +46,8 @@ class Chitter < Sinatra::Base
       session[:user_id] = reg_user.id
       redirect '/'
     else 
-      if (User.all.map {|user| user.email }.include? (params[:email])) && (User.all.map {|user| user.username }.include? (params[:username]))
-        flash.now[:error] = "Both that email and username have  been taken.  Please try something new."
+      if User.validate_unique_email_user?(params)
+        flash.now[:error] = "Both that email and username have been taken.  Please try something new."
       elsif User.all.map {|user| user.username }.include? (params[:username])
         flash.now[:error] = "Sorry. That username has already been taken.  Please choose another one."
       elsif User.all.map {|user| user.email }.include? (params[:email])

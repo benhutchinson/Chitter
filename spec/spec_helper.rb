@@ -2,6 +2,7 @@ ENV['RACK_ENV'] = 'test'
 require './app/server'
 require 'database_cleaner'
 require 'capybara/rspec'
+require 'features/helper_methods'
 
 Capybara.app = Chitter.new
 

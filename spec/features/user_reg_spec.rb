@@ -2,11 +2,10 @@ require 'spec_helper'
 
 feature "User wants to sign up" do 
 
+  include HelperMethods
+
   before(:each) {
-    User.create(:name => "Ben",
-                :username => "bendev",
-                :email => "test@test.com",
-                :password => "test")
+    create_user
     }
 
   scenario "with unique credentials" do 
